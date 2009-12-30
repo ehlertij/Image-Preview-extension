@@ -1,6 +1,6 @@
 {
   "name": "Image Preview",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Finds links to images in the web page you're on and replaces the link with a lightbox popup.",
   "icons": { "128": "icon128.png",
 			 "48": "icon48.png"},
