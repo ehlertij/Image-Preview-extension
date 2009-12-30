@@ -1,0 +1,10 @@
+{
+  "name": "Image Preview",
+  "version": "0.0.2",
+  "description": "Finds links to images in the web page you're on and replaces the link with a lightbox popup.",
+  "icons": { "128": "icon128.png",
+			 "48": "icon48.png"},
+  "content_scripts": [
+    { "matches": ["http://*/*"], "js": ["ip_content_script.js"] }
+  ]
+}
