@@ -1,6 +1,6 @@
 {
   "name": "Image Preview",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Finds links to images and youtube videos in the web page you're on and replaces the link with a lightbox popup.",
   "options_page": "image_preview_options.html",
   "background_page": "ip_background.html",
