@@ -4,7 +4,11 @@
 chrome.extension.onRequest.addListener(
   function(request, sender, sendResponse) {
     if (request.func == "getOptions"){
-      sendResponse({youtube_enabled: (localStorage.youtube_enabled == "enabled"), image_enabled: (localStorage.image_enabled == "enabled")});
+    	if(localStorage.youtube_enabled != "disabled" && localStorage.youtube_enabled != "enabled"){
+    		localStorage.youtube_enabled = "enabled";
+    		localStorage.image_enabled = "enabled";
+    	}
+      	sendResponse({youtube_enabled: (localStorage.youtube_enabled == "enabled"), image_enabled: (localStorage.image_enabled == "enabled")});
 	}
   });
 </script>
