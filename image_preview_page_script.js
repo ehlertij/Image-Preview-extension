@@ -52,7 +52,7 @@ var ip_zoomImage = function(){
 		modal.style.position = "absolute";
 		ip_zoomed = true;
 	} else {
-		image.setAttribute("style", "cursor:pointer; margin-left:auto; margin-right:auto; max-width: 95%; max-height: 95%; text-align: center; display: block; position: relative; z-index:9999999;");
+		image.setAttribute("style", "cursor:pointer; margin-left:auto; margin-right:auto; max-width: 95%; max-height: 95%; text-align: center; display: block; position: fixed; z-index:9999999;");
 		modal.style.position = "fixed";
 		ip_zoomed = false;
 	}
