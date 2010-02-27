@@ -1,0 +1,73 @@
+<html>
+<head><title>Image Preview Options</title></head>
+<script type="text/javascript">
+
+// Saves options to localStorage.
+function save_options() {
+  var youtube_select = document.getElementById("youtube_select");
+  var image_select = document.getElementById("image_select");
+  localStorage.youtube_enabled = youtube_select.children[youtube_select.selectedIndex].value;
+  localStorage.image_enabled = image_select.children[image_select.selectedIndex].value;
+
+  // Update status to let user know options were saved.
+  var status = document.getElementById("status");
+  status.innerHTML = "Options Saved.";
+  setTimeout(function() {
+    status.innerHTML = "";
+  }, 2000);
+}
+
+// Restores select box state to saved value from localStorage.
+function restore_options() {
+  var youtube_enabled = localStorage.youtube_enabled;
+  if (!youtube_enabled) {
+  	localStorage.youtube_enabled = "enabled";
+    return;
+  }
+  var youtube_select = document.getElementById("youtube_select");
+  for (var i = 0; i < youtube_select.children.length; i++) {
+    var child = youtube_select.children[i];
+    if (child.value == youtube_enabled) {
+      child.selected = "true";
+      break;
+    }
+  }
+  
+  var image_enabled = localStorage.image_enabled;
+  if (!image_enabled) {
+  	localStorage.image_enabled = "enabled";
+    return;
+  }
+  var image_select = document.getElementById("image_select");
+  for (var i = 0; i < image_select.children.length; i++) {
+    var child = image_select.children[i];
+    if (child.value == image_enabled) {
+      child.selected = "true";
+      break;
+    }
+  }
+}
+
+</script>
+
+<body onload="restore_options()">
+	<h1>Image Preview options</h1>
+	Youtube Preview:
+	<select id="youtube_select">
+	 <option value="enabled">Enabled</option>
+	 <option value="disabled">Disabled</option>
+	</select>
+	<br>
+	
+	Image Preview:
+	<select id="image_select">
+	 <option value="enabled">Enabled</option>
+	 <option value="disabled">Disabled</option>
+	</select>
+	<br>
+	
+	<button onclick="save_options()">Save</button>
+	<br>
+	<p id="status" style="color:red;"></p>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<html>
+<head>
+<script>
+chrome.extension.onRequest.addListener(
+  function(request, sender, sendResponse) {
+    if (request.func == "getOptions"){
+      sendResponse({youtube_enabled: (localStorage.youtube_enabled == "enabled"), image_enabled: (localStorage.image_enabled == "enabled")});
+	}
+  });
+</script>
+</head>
+</html>
