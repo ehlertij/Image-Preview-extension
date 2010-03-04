@@ -37,11 +37,11 @@ function parsePage(response){
 	  }
 	}
 	if(found){
-		addModal();
+		addModal(response.zoom_enabled);
 	}
 }
 
-function addModal(){
+function addModal(zoom_enabled){
 	var script = document.createElement('script');
 	script.src = chrome.extension.getURL("image_preview_page_script.js");
 	script.type = "text/javascript";
@@ -58,9 +58,14 @@ function addModal(){
 
 	var image = document.createElement('img');
 	image.setAttribute('id', 'image_preview_image_tag');
-	image.setAttribute("style", "cursor:pointer; margin-left:auto; margin-right:auto; left:0; right:0; max-width: 95%; max-height: 95%; text-align: center; display: block; position: absolute; z-index:9999999;");
+	image.setAttribute("style", "margin-left:auto; margin-right:auto; max-width: 95%; max-height: 95%; text-align: center; display: block; position: relative; z-index:9999999;");
 	image.setAttribute("align", "middle");
-	image.setAttribute("onclick", "javascript:ip_zoomImage()");
+	if(zoom_enabled){
+		image.setAttribute("onclick", "javascript:ip_zoomImage()");
+		image.style.cursor = "pointer";
+	} else {
+		image.setAttribute("onclick", "javascript:ip_hideModal()");
+	}
 
 	var youtube = document.createElement('div');
 	youtube.setAttribute('id', 'youtube_preview_div_tag');

@@ -3,7 +3,7 @@ var ip_zoomed = false;
 var ip_showImagePreview = function(path){
 	var image = document.getElementById('image_preview_image_tag');
   	image.setAttribute("src", path);
-  	image.setAttribute("style", "cursor:pointer; margin-left:auto; margin-right:auto; max-width: 95%; max-height: 95%; text-align: center; display: block; position: relative; z-index:9999999;");
+  	image.style.display = "block";
   	ip_displayModal();
   	return false;
 }
@@ -18,6 +18,10 @@ var ip_hideModal = function(){
 	image.style.display = "none";
 	mask.style.display = "none";
 	modal.style.display = "none";
+	if(ip_zoomed){
+		image.setAttribute("style", "cursor:pointer; margin-left:auto; margin-right:auto; max-width: 95%; max-height: 95%; text-align: center; display: none; position: relative; z-index:9999999;");	
+		modal.style.position = "fixed";
+	}
 	ip_zoomed = false;
 }
 
@@ -52,7 +56,7 @@ var ip_zoomImage = function(){
 		modal.style.position = "absolute";
 		ip_zoomed = true;
 	} else {
-		image.setAttribute("style", "cursor:pointer; margin-left:auto; margin-right:auto; max-width: 95%; max-height: 95%; text-align: center; display: block; position: fixed; z-index:9999999;");
+		image.setAttribute("style", "cursor:pointer; margin-left:auto; margin-right:auto; max-width: 95%; max-height: 95%; text-align: center; display: block; position: relative; z-index:9999999;");
 		modal.style.position = "fixed";
 		ip_zoomed = false;
 	}

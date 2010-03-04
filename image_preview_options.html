@@ -6,8 +6,11 @@
 function save_options() {
   var youtube_select = document.getElementById("youtube_select");
   var image_select = document.getElementById("image_select");
+  var zoom_select = document.getElementById("zoom_select");
+  
   localStorage.youtube_enabled = youtube_select.children[youtube_select.selectedIndex].value;
   localStorage.image_enabled = image_select.children[image_select.selectedIndex].value;
+  localStorage.zoom_enabled = zoom_select.children[zoom_select.selectedIndex].value;
 
   // Update status to let user know options were saved.
   var status = document.getElementById("status");
@@ -46,6 +49,20 @@ function restore_options() {
       break;
     }
   }
+  
+  var zoom_enabled = localStorage.zoom_enabled;
+  if (!zoom_enabled) {
+  	localStorage.zoom_enabled = "enabled";
+    return;
+  }
+  var zoom_select = document.getElementById("zoom_select");
+  for (var i = 0; i < zoom_select.children.length; i++) {
+    var child = zoom_select.children[i];
+    if (child.value == zoom_enabled) {
+      child.selected = "true";
+      break;
+    }
+  }
 }
 
 </script>
@@ -61,6 +78,13 @@ function restore_options() {
 	
 	Image Preview:
 	<select id="image_select">
+	 <option value="enabled">Enabled</option>
+	 <option value="disabled">Disabled</option>
+	</select>
+	<br>
+
+	Image Zoom:
+	<select id="zoom_select">
 	 <option value="enabled">Enabled</option>
 	 <option value="disabled">Disabled</option>
 	</select>

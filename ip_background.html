@@ -7,8 +7,12 @@ chrome.extension.onRequest.addListener(
     	if(localStorage.youtube_enabled != "disabled" && localStorage.youtube_enabled != "enabled"){
     		localStorage.youtube_enabled = "enabled";
     		localStorage.image_enabled = "enabled";
+    		localStorage.zoom_enabled = "enabled";
     	}
-      	sendResponse({youtube_enabled: (localStorage.youtube_enabled == "enabled"), image_enabled: (localStorage.image_enabled == "enabled")});
+      	sendResponse({youtube_enabled: (localStorage.youtube_enabled == "enabled"), 
+      		image_enabled: (localStorage.image_enabled == "enabled"), 
+      		zoom_enabled: (localStorage.zoom_enabled == "enabled")
+  		});
 	}
   });
 </script>
